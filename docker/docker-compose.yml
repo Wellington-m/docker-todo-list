@@ -3,6 +3,7 @@ version: '3'
 services:
   todotests:
     image: todotests
+    container_name: todotests
     environment: 
       - FRONT_HOST=todofront
     restart: always
@@ -12,6 +13,7 @@ services:
 
   todofront:
     image: todofrontend
+    container_name: todofront
     ports:
       - 3000:3000
     environment:
@@ -22,6 +24,7 @@ services:
 
   todoback:
     image: todobackend
+    container_name: todoback
     restart: always
     ports:
       - 3001:3001
