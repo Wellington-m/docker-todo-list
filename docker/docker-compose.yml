@@ -15,9 +15,11 @@ services:
     image: todofrontend
     container_name: todofront
     ports:
-      - 3000:3000
+      - 127.0.0.1:3000:3000
+    networks:
+      - todonet
     environment:
-      - REACT_APP_API_HOST=todoback
+      - REACT_APP_API_HOST=localhost
     restart: always
     depends_on:
       - todoback
@@ -27,4 +29,9 @@ services:
     container_name: todoback
     restart: always
     ports:
-      - 3001:3001
+      - 127.0.0.1:3001:3001
+    networks:
+      - todonet
+networks:
+  todonet:
+    driver: bridge
